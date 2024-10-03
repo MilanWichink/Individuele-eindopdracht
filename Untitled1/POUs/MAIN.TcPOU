@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{4c18c0eb-3271-4093-a9fa-bc44a8c4f230}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Power: BOOL;
+	Initalisatie_voltooid: BOOL;
+	Initaliseren: BOOL;
+	Tekst: WSTRING(INT#50) := "Hoi" ;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Power := TRUE THEN Tekst:= "Initaliseer de machine";
+	
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="90" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
