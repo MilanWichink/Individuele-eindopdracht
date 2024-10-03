@@ -11,6 +11,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"62"</v>
+              <v n="TextDefault">"%i MAIN.Tekst"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"89"</v>
+              <v n="TextDefault">"%iMAIN.Tekst"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"906"</v>
+              <v n="TextDefault">"%i[MAIN.Tekst]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"977"</v>
               <v n="TextDefault">"%MAIN.Tekst"</v>
               <l n="LanguageTexts" t="ArrayList" />

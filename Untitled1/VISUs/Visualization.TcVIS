@@ -241,7 +241,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"%MAIN.Tekst"</v>
+                      <v n="Value">""</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -249,11 +249,11 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.Tekst"</v>
+                      <v n="Value">"%i[MAIN.Tekst]"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"977"</v>
+                      <v n="Value">""</v>
                     </o>
                   </l>
                 </o>
