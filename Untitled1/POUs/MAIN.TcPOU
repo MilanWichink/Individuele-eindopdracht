@@ -6,7 +6,7 @@ VAR
 	Power: BOOL;
 	Initalisatie_voltooid: BOOL;
 	Initaliseren: BOOL;
-	Tekst: WSTRING(INT#50) := "Hoi" ;
+	Tekst: WSTRING(INT#22) := "Hoi" ;
 END_VAR
 ]]></Declaration>
     <Implementation>
