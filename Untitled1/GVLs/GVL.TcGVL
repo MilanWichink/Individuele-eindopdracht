@@ -3,6 +3,10 @@
   <GVL Name="GVL" Id="{54771d00-2194-439f-8002-493f6818a753}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	MotorInvoer: BOOL := 0;
+	MotorUitvoer: BOOL := 0;
+	ZaagLengte: INT :=0;
+	HuidigePositieAanvoer: INT := 200;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
