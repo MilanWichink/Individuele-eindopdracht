@@ -13,7 +13,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF Power = TRUE THEN 
 
-	IF GVL.HuidigePositieAanvoer >=1 THEN
+	IF GVL.HuidigePositieAanvoer >=1 AND Initialisatie_voltooid = FALSE THEN
 		Status:= 'Initialiseer de machine';
 	END_IF
 	
@@ -47,11 +47,21 @@ END_VAR
 	END_IF
 	
 	IF GVL.ZaagLengte >= 0 AND GVL.StartAanvoer = TRUE THEN
-		IF GVL.ZaagLengte >= GVL.HuidigePositieAanvoer THEN 
+		IF GVL.StartAanvoer = TRUE AND GVL.ZaagLengte <=GVL.HuidigePositieAanvoer OR GVL.ZaagLengte >=GVL.HuidigePositieAanvoer THEN
+		GVL.MotorInvoer:= TRUE;
+		END_IF
+		
+		IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer THEN 
 		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer + 1;
 		END_IF
-		IF GVL.ZaagLengte <= GVL.HuidigePositieAanvoer THEN 
+		
+		IF GVL.ZaagLengte < GVL.HuidigePositieAanvoer THEN 
 		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer - 1;
+		END_IF
+		
+		IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
+		GVL.StartAanvoer:=FALSE;
+		GVl.MotorInvoer:=FALSE;
 		END_IF
 	END_IF
 END_IF]]></ST>
@@ -81,10 +91,17 @@ END_IF]]></ST>
       <LineId Id="248" Count="0" />
       <LineId Id="252" Count="0" />
       <LineId Id="152" Count="0" />
-      <LineId Id="290" Count="2" />
+      <LineId Id="290" Count="1" />
+      <LineId Id="312" Count="3" />
+      <LineId Id="292" Count="0" />
       <LineId Id="294" Count="1" />
+      <LineId Id="311" Count="0" />
       <LineId Id="297" Count="1" />
       <LineId Id="296" Count="0" />
+      <LineId Id="310" Count="0" />
+      <LineId Id="307" Count="1" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="309" Count="0" />
       <LineId Id="293" Count="0" />
       <LineId Id="276" Count="0" />
     </LineIds>
