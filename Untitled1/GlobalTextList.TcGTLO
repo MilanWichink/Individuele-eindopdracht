@@ -56,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"363"</v>
+              <v n="TextDefault">"Initialisatie machine"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"68"</v>
               <v n="TextDefault">"Initialiseer de machine"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -78,6 +83,11 @@
             <o>
               <v n="TextID">"30"</v>
               <v n="TextDefault">"Motor uitvoer"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"607"</v>
+              <v n="TextDefault">"Start aanvoer"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
