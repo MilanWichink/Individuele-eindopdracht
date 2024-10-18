@@ -3,35 +3,31 @@
   <POU Name="Initialiseren" Id="{50253b7d-fc8b-4a12-9fbd-309ed75f9929}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Initialiseren
 VAR
+	timer1: ton;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL.Initialisatie_voltooid = FALSE THEN
+      <ST><![CDATA[IF GVL.Initialisatie_voltooid = FALSE AND GVL.Initialiseren =TRUE THEN
+	Simulatie_Invoer();
+END_IF
+
 			
-			IF GVL.ZaagLengte <GVL.HuidigePositieAanvoer AND GVL.initialiseren = FALSE THEN
-				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer-1;
+			IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN 
+			GVL.Initialisatie_voltooid := TRUE;	
+			GVL.Initialiseren:=FALSE;	
 			END_IF
-			
-			IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer AND GVL.initialiseren = False THEN
-				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer+1;	
-			END_IF
-			
-			IF GVL.Initialiseren = TRUE AND GVL.ZaagLengte <=GVL.HuidigePositieAanvoer OR GVL.ZaagLengte >=GVL.HuidigePositieAanvoer THEN
-				GVL.MotorInvoer:= TRUE;
-			END_IF
-			
-			IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN GVL.Initialisatie_voltooid := TRUE;		
-			END_IF
-			
-			IF GVL.Initialisatie_voltooid= TRUE THEN 
-			GVL.MotorInvoer:=FALSE;
-			GVL.Status:= 'Voer de zaag lengte in';
-			END_IF	
 	
-	END_IF]]></ST>
+	]]></ST>
     </Implementation>
     <LineIds Name="Initialiseren">
-      <LineId Id="6" Count="21" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="62" Count="1" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="82" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="27" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

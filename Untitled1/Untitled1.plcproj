@@ -33,6 +33,9 @@
     <Compile Include="POUs\Initialiseren.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Simulatie_invoer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Zagen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
