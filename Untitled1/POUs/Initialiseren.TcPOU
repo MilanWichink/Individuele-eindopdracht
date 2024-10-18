@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Initialiseren" Id="{50253b7d-fc8b-4a12-9fbd-309ed75f9929}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Initialiseren
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL.Initialisatie_voltooid = FALSE THEN
+			
+			IF GVL.ZaagLengte <GVL.HuidigePositieAanvoer AND GVL.initialiseren = FALSE THEN
+				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer-1;
+			END_IF
+			
+			IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer AND GVL.initialiseren = False THEN
+				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer+1;	
+			END_IF
+			
+			IF GVL.Initialiseren = TRUE AND GVL.ZaagLengte <=GVL.HuidigePositieAanvoer OR GVL.ZaagLengte >=GVL.HuidigePositieAanvoer THEN
+				GVL.MotorInvoer:= TRUE;
+			END_IF
+			
+			IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN GVL.Initialisatie_voltooid := TRUE;		
+			END_IF
+			
+			IF GVL.Initialisatie_voltooid= TRUE THEN 
+			GVL.MotorInvoer:=FALSE;
+			GVL.Status:= 'Voer de zaag lengte in';
+			END_IF	
+	
+	END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Initialiseren">
+      <LineId Id="6" Count="21" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

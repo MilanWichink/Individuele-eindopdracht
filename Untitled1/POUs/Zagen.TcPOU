@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Zagen" Id="{4c18c0eb-3271-4093-a9fa-bc44a8c4f230}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Zagen
+VAR
+	MotorUitvoer: BOOL := 0;
+	StartAanvoer: BOOL := 0;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL.Power = TRUE THEN 
+
+	IF GVL.HuidigePositieAanvoer >=1 AND GVL.Initialisatie_voltooid = FALSE THEN
+		GVL.Status:= 'Initialiseer de machine';
+	END_IF
+	
+	IF GVL.Initialisatie_voltooid = TRUE THEN
+		GVL.Initialiseren := FALSE;
+	END_IF
+
+	
+	IF GVL.Initialisatie_voltooid = FALSE THEN
+			
+			IF GVL.ZaagLengte <GVL.HuidigePositieAanvoer AND GVL.initialiseren = TRUE THEN
+				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer-1;
+			END_IF
+			
+			IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer AND GVL.initialiseren = TRUE THEN
+				GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer+1;	
+			END_IF
+			
+			IF GVL.Initialiseren = TRUE AND GVL.ZaagLengte <=GVL.HuidigePositieAanvoer OR GVL.ZaagLengte >=GVL.HuidigePositieAanvoer THEN
+				GVL.MotorInvoer:= TRUE;
+			END_IF
+			
+			IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN GVL.Initialisatie_voltooid := TRUE;		
+			END_IF
+			
+			IF GVL.Initialisatie_voltooid= TRUE THEN 
+			GVL.MotorInvoer:=FALSE;
+			GVL.Status:= 'Voer de zaag lengte in';
+			END_IF	
+	
+	END_IF
+	
+	IF GVL.ZaagLengte >= 0 AND StartAanvoer = TRUE THEN
+		IF StartAanvoer = TRUE AND GVL.ZaagLengte <=GVL.HuidigePositieAanvoer OR GVL.ZaagLengte >=GVL.HuidigePositieAanvoer THEN
+		GVL.MotorInvoer:= TRUE;
+		END_IF
+		
+		IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer THEN 
+		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer + 1;
+		END_IF
+		
+		IF GVL.ZaagLengte < GVL.HuidigePositieAanvoer THEN 
+		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer - 1;
+		END_IF
+		
+		IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
+		StartAanvoer:=FALSE;
+		GVl.MotorInvoer:=FALSE;
+		END_IF
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Zagen">
+      <LineId Id="221" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="267" Count="1" />
+      <LineId Id="279" Count="2" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="204" Count="3" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="230" Count="2" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="237" Count="0" />
+      <LineId Id="272" Count="1" />
+      <LineId Id="271" Count="0" />
+      <LineId Id="243" Count="1" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="266" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="278" Count="0" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="248" Count="0" />
+      <LineId Id="252" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="290" Count="1" />
+      <LineId Id="312" Count="3" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="294" Count="1" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="297" Count="1" />
+      <LineId Id="296" Count="0" />
+      <LineId Id="310" Count="0" />
+      <LineId Id="307" Count="1" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="309" Count="0" />
+      <LineId Id="293" Count="0" />
+      <LineId Id="276" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
