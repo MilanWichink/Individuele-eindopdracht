@@ -4,48 +4,30 @@
     <Declaration><![CDATA[PROGRAM Zagen
 VAR
 	MotorUitvoer: BOOL := 0;
-	
+	StartZagen: BOOL;
+	MotorZagen: BOOL;
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL.Power = TRUE THEN 
 
-	IF GVL.HuidigePositieAanvoer >=1 AND GVL.Initialisatie_voltooid = FALSE THEN
-		GVL.Status:= 'Initialiseer de machine';
-	END_IF
 	
-	IF GVL.Initialisatie_voltooid= TRUE THEN 
-			GVL.Status:= 'Voer de zaag lengte in';
-	END_IF	
-
-	
-	IF GVL.ZaagLengte >= 0 AND GVL.StartAanvoer = TRUE THEN
-		Simulatie_invoer();
-		END_IF
+	IF GVL.AanvoerInPositie = TRUE AND StartZagen = TRUE THEN
+		MotorZagen :=TRUE;
+		GVL.Status:= 'Zaag actief';
 		
-		IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
-		GVL.StartAanvoer:=FALSE;
-		END_IF
+	END_IF
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="Zagen">
       <LineId Id="221" Count="0" />
       <LineId Id="220" Count="0" />
-      <LineId Id="119" Count="0" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="267" Count="0" />
       <LineId Id="341" Count="0" />
-      <LineId Id="338" Count="0" />
-      <LineId Id="340" Count="0" />
-      <LineId Id="280" Count="0" />
-      <LineId Id="135" Count="0" />
-      <LineId Id="290" Count="1" />
-      <LineId Id="312" Count="0" />
-      <LineId Id="314" Count="0" />
-      <LineId Id="310" Count="0" />
-      <LineId Id="343" Count="1" />
-      <LineId Id="342" Count="0" />
+      <LineId Id="352" Count="1" />
+      <LineId Id="359" Count="0" />
+      <LineId Id="357" Count="0" />
+      <LineId Id="354" Count="0" />
       <LineId Id="276" Count="0" />
     </LineIds>
   </POU>

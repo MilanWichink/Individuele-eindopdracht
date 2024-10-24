@@ -5,7 +5,7 @@
     <CycleTime>10000</CycleTime>
     <Priority>21</Priority>
     <PouCall>
-      <Name>Initialiseren</Name>
+      <Name>InvoerEnUitvoer</Name>
     </PouCall>
     <TaskFBGuid>{1d4fa552-3bbc-4d25-8643-3829cc8edf0d}</TaskFBGuid>
     <Fb_init>{5ccdf20e-df6c-4536-b614-80b9b91f21c1}</Fb_init>

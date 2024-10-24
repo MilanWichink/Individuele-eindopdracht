@@ -5,29 +5,29 @@
 VAR_INPUT
 END_VAR
 VAR
-	timer1: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[IF gvl.Power = TRUE THEN
+	
 
-IF GVL.ZaagLengte <= GVL.HuidigePositieAanvoer THEN
-	Gvl.MotorInvoer:= TRUE;				
-	GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer - 1;
-END_IF;
+	IF GVL.ZaagLengte <= GVL.HuidigePositieAanvoer THEN
+		Gvl.MotorInvoer:= TRUE;				
+		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer - 1;
+	END_IF;
+				
+				
+	IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer THEN
+		Gvl.MotorInvoer:= TRUE;				
+		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer + 1;
+	END_IF;
+	
+	
+	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
+		GVL.MotorInvoer := FALSE;
+	END_IF
 			
-			
-IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer THEN
-	Gvl.MotorInvoer:= TRUE;				
-	GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer + 1;
-END_IF;
-
-
-IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
-GVL.MotorInvoer := FALSE;
-END_IF
-			
-			
+END_IF			
 		
 	
 
@@ -35,6 +35,7 @@ END_IF
     </Implementation>
     <LineIds Name="Simulatie_invoer">
       <LineId Id="38" Count="0" />
+      <LineId Id="53" Count="0" />
       <LineId Id="8" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="41" Count="0" />

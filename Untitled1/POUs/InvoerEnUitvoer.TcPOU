@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="InvoerEnUitvoer" Id="{50253b7d-fc8b-4a12-9fbd-309ed75f9929}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM InvoerEnUitvoer
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF gvl.Power = TRUE THEN
+		
+	IF GVL.Initialisatie_voltooid = FALSE THEN
+		Initialiseren();
+	END_IF	
+	
+	IF GVL.Initialisatie_voltooid= TRUE THEN 
+			GVL.Status:= 'Voer de zaag lengte in';
+	END_IF	
+
+	IF GVL.ZaagLengte >= 0 AND GVL.StartAanvoer = TRUE THEN
+		Simulatie_invoer();
+	END_IF
+		
+	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer AND gvl.ZaagLengte >0 THEN
+		gvl.AanvoerInPositie :=TRUE;
+		GVL.StartAanvoer:=FALSE;
+		GVL.Status:= 'Aanvoer in positie';
+	END_IF
+	
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="InvoerEnUitvoer">
+      <LineId Id="89" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="119" Count="1" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="101" Count="2" />
+      <LineId Id="105" Count="8" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

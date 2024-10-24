@@ -10,7 +10,8 @@ VAR_GLOBAL
 	MotorInvoer: BOOL := 0;
 	ZaagLengte: INT :=0;
 	HuidigePositieAanvoer: INT := 200;
-	StartAanvoer: Bool;
+	StartAanvoer: BOOL;
+	AanvoerInPositie: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
