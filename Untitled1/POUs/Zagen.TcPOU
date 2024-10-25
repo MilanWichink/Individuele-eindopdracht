@@ -3,7 +3,7 @@
   <POU Name="Zagen" Id="{4c18c0eb-3271-4093-a9fa-bc44a8c4f230}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Zagen
 VAR
-	MotorUitvoer: BOOL := 0;
+	
 	StartZagen: BOOL;
 	MotorZagen: BOOL;
 	timer: ton;
@@ -28,6 +28,9 @@ END_VAR
 		END_IF
 		
 	END_IF
+ELSE
+MotorZagen:= FALSE;
+
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="Zagen">
@@ -43,6 +46,9 @@ END_IF]]></ST>
       <LineId Id="376" Count="0" />
       <LineId Id="357" Count="0" />
       <LineId Id="354" Count="0" />
+      <LineId Id="388" Count="0" />
+      <LineId Id="390" Count="0" />
+      <LineId Id="389" Count="0" />
       <LineId Id="276" Count="0" />
     </LineIds>
   </POU>

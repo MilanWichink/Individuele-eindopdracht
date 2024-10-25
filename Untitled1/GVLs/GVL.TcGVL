@@ -13,6 +13,7 @@ VAR_GLOBAL
 	StartAanvoer: BOOL;
 	AanvoerInPositie: BOOL;
 	ZagenKlaar: BOOL;
+	motoruitvoer: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
