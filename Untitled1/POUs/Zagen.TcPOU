@@ -6,7 +6,9 @@ VAR
 	MotorUitvoer: BOOL := 0;
 	StartZagen: BOOL;
 	MotorZagen: BOOL;
+	timer: ton;
 	
+	EindaanslagZaag: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -16,6 +18,14 @@ END_VAR
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = TRUE THEN
 		MotorZagen :=TRUE;
 		GVL.Status:= 'Zaag actief';
+		timer(in:=TRUE, Pt := T#5S);
+		IF timer.Q THEN 
+			EindaanslagZaag := TRUE;	
+		END_IF
+		IF EindaanslagZaag = TRUE THEN
+			MotorZagen := FALSE;
+			GVL.ZagenKlaar :=TRUE;
+		END_IF
 		
 	END_IF
 END_IF]]></ST>
@@ -26,6 +36,11 @@ END_IF]]></ST>
       <LineId Id="341" Count="0" />
       <LineId Id="352" Count="1" />
       <LineId Id="359" Count="0" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="369" Count="2" />
+      <LineId Id="374" Count="1" />
+      <LineId Id="386" Count="0" />
+      <LineId Id="376" Count="0" />
       <LineId Id="357" Count="0" />
       <LineId Id="354" Count="0" />
       <LineId Id="276" Count="0" />

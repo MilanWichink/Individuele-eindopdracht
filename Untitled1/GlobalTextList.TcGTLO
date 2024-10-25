@@ -86,6 +86,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"344"</v>
+              <v n="TextDefault">"Sensor uitvoer"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"607"</v>
               <v n="TextDefault">"Start aanvoer"</v>
               <l n="LanguageTexts" t="ArrayList" />

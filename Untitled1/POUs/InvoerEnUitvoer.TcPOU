@@ -4,6 +4,8 @@
     <Declaration><![CDATA[PROGRAM InvoerEnUitvoer
 VAR
 
+	StartUitvoer: BOOL;
+	SensorUitvoer: Bool;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -27,6 +29,16 @@ END_VAR
 		GVL.Status:= 'Aanvoer in positie';
 	END_IF
 	
+	IF GVL.ZagenKlaar THEN
+		gvl.Status := 'Uitvoer actief';
+		StartUitvoer := TRUE;
+	END_IF
+	
+	IF SensorUitvoer = TRUE THEN
+		StartUitvoer := FALSE;
+		GVL.Status := 'Voer de zaaglengte in';
+	END_IF
+	
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="InvoerEnUitvoer">
@@ -38,6 +50,12 @@ END_IF]]></ST>
       <LineId Id="101" Count="2" />
       <LineId Id="105" Count="8" />
       <LineId Id="100" Count="0" />
+      <LineId Id="136" Count="1" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="138" Count="1" />
+      <LineId Id="144" Count="2" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="147" Count="0" />
       <LineId Id="27" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>

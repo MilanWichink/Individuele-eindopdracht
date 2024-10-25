@@ -12,6 +12,7 @@ VAR_GLOBAL
 	HuidigePositieAanvoer: INT := 200;
 	StartAanvoer: BOOL;
 	AanvoerInPositie: BOOL;
+	ZagenKlaar: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
