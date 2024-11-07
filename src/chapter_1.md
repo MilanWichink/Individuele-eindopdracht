@@ -2,50 +2,70 @@
 
 ```plantuml
 
-@startuml Flowchart in en uitvoer
+@startuml flowchart
 
+|Hoofdtak|
 start
 
-if (Power) then (yes)
+if (Systeem is ingeschakeld?) then (ja)
   
-  if (Initialisatie_voltooid) then (yes)
-    :Initialiseren;
+  if (Initialisatie voltooid?) then (nee)
+    :Voer initialisatie uit;
+    :Markeer initialisatie als voltooid;
   endif
   
+  if (Initialisatie voltooid en aanvoer niet gestart?) then (ja)
+    :Toon status: 'Voer de zaaglengte in';
+  endif
+
+  if (Zaaglengte ingesteld en aanvoer gestart?) then (ja)
+    :Simuleer invoer;
+    :Reset zaag- en uitvoersensor;
+  endif
   
-    :'Voer de zaag lengte in';
-    If (zaag lengte veranderd?) then (yes)
-    :start aanvoer;
+  if (Zaaglengte bereikt aanvoerpositie en aanvoer gereed?) then (ja)
+    :Zet aanvoer in positie;
+    :Stop aanvoer;
+    :Toon status: 'Aanvoer in positie, druk op: start zagen';
+  endif
+
+  stop
+
+|Losse Tak|
+start
+if (Systeem is ingeschakeld?) then (ja)
+
+  if (Aanvoer in positie en zaag niet gestart?) then (ja)
+    :Toon status: 'Voer eerst een lengte in';
+  endif
+
+  if (Aanvoer in positie en zaag gestart?) then (ja)
+    :Start zaagmotor;
+    :Toon status: 'Zaag actief';
+    :Start timer voor 5 seconden;
+    
+    if (Timer afgelopen?) then (ja)
+      :Bereik eindaanslag zaag;
     endif
 
-    :Start Zagen;
+    if (Eindaanslag zaag bereikt?) then (ja)
+      :Stop zaagmotor;
+      :Reset zaagstatus;
+      :Markeer zagen als voltooid;
+      :Stop de timer;
+      :Reset eindaanslag zaag;
+    endif
 
-    :Zagen klaar;
-    :Start motor uitvoer;
+  endif
 
-  if (GVL.ZaagLengte = GVL.HuidigePositieAanvoer AND motoruitvoer = FALSE AND gvl.ZagenKlaar = FALSE AND gvl.ZaagLengte > 0) then (yes)
-    :gvl.AanvoerInPositie := TRUE;
-    :GVL.StartAanvoer := FALSE;
-    :GVL.Status := 'Aanvoer in positie druk op: start zagen';
-  endif
-  
-  if (GVL.ZagenKlaar) then (yes)
-    :gvl.Status := 'Uitvoer actief';
-    :MotorUitvoer := TRUE;
-  endif
-  
-  if (SensorUitvoer = TRUE AND gvl.ZagenKlaar) then (yes)
-    :GVL.Status := 'Voer de zaaglengte in';
-    :MotorUitvoer := FALSE;
-  endif
-  
-else
-  :stop motor invoer;
-  :stop motor uitvoer;
-  
+else (nee)
+  :Schakel zaagmotor uit;
 endif
 
 stop
 
 @enduml
+
+
+
 ```
