@@ -16,30 +16,34 @@ END_VAR
 		Initialiseren();
 	END_IF	
 	
-	IF GVL.Initialisatie_voltooid= TRUE THEN 
+	IF GVL.Initialisatie_voltooid= TRUE AND GVL.startAanvoer =FALSE THEN 
+			
 			GVL.Status:= 'Voer de zaag lengte in';
+			
 	END_IF	
 
 	IF GVL.ZaagLengte >= 0 AND GVL.StartAanvoer = TRUE THEN
 		Simulatie_invoer();
+		GVL.ZagenKlaar:=FALSE;
+		sensorUitvoer := FALSE;
 	END_IF
+	
 		
-	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer AND gvl.ZagenKlaar = FALSE AND gvl.ZaagLengte >0 THEN
+	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer AND motoruitvoer = FALSE AND gvl.ZagenKlaar = FALSE AND gvl.ZaagLengte >0 THEN
 		gvl.AanvoerInPositie :=TRUE;
 		GVL.StartAanvoer:=FALSE;
 		GVL.Status:= 'Aanvoer in positie druk op: start zagen';
 	END_IF
 	
 	
-	IF GVL.ZagenKlaar AND gvl.AanvoerInPositie THEN
+	IF GVL.ZagenKlaar THEN
 		gvl.Status := 'Uitvoer actief';
 		MotorUitvoer := TRUE;
 	END_IF
 	
 	IF SensorUitvoer = TRUE AND gvl.ZagenKlaar THEN
-		MotorUitvoer := FALSE;
 		GVL.Status := 'Voer de zaaglengte in';
-		gvl.ZagenKlaar :=FALSE;
+		MotorUitvoer := FALSE;
 	END_IF
 	
 	
@@ -56,16 +60,25 @@ END_IF]]></ST>
       <LineId Id="119" Count="1" />
       <LineId Id="118" Count="0" />
       <LineId Id="117" Count="0" />
-      <LineId Id="101" Count="2" />
-      <LineId Id="105" Count="8" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="105" Count="2" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="179" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="109" Count="4" />
       <LineId Id="100" Count="0" />
       <LineId Id="162" Count="0" />
       <LineId Id="136" Count="1" />
       <LineId Id="142" Count="0" />
       <LineId Id="138" Count="1" />
-      <LineId Id="144" Count="2" />
+      <LineId Id="144" Count="1" />
       <LineId Id="149" Count="0" />
-      <LineId Id="169" Count="0" />
+      <LineId Id="176" Count="0" />
       <LineId Id="147" Count="0" />
       <LineId Id="166" Count="0" />
       <LineId Id="168" Count="0" />
