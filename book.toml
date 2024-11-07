@@ -1,0 +1,10 @@
+[book]
+authors = ["milan"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Flow chart individuele einopdracht"
+
+
+[preprocessor.plantuml]
+plantuml-cmd="http://localhost:8181"
