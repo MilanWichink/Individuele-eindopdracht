@@ -14,7 +14,9 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF GVL.Power = TRUE THEN 
 
-	
+	IF GVL.AanvoerInPositie = TRUE AND StartZagen = FALSE THEN
+		GVL.Status := 'voer eerst een lengte in';
+	END_IF
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = TRUE THEN
 		MotorZagen :=TRUE;
 		GVL.Status:= 'Zaag actief';
@@ -24,7 +26,9 @@ END_VAR
 		END_IF
 		IF EindaanslagZaag = TRUE THEN
 			MotorZagen := FALSE;
+			StartZagen := FALSE;
 			GVL.ZagenKlaar :=TRUE;
+			timer(in:= FALSE, pt := T#5S);
 		END_IF
 		
 	END_IF
@@ -37,12 +41,15 @@ END_IF]]></ST>
       <LineId Id="221" Count="0" />
       <LineId Id="220" Count="0" />
       <LineId Id="341" Count="0" />
+      <LineId Id="400" Count="1" />
       <LineId Id="352" Count="1" />
       <LineId Id="359" Count="0" />
       <LineId Id="367" Count="0" />
       <LineId Id="369" Count="2" />
       <LineId Id="374" Count="1" />
+      <LineId Id="411" Count="0" />
       <LineId Id="386" Count="0" />
+      <LineId Id="413" Count="0" />
       <LineId Id="376" Count="0" />
       <LineId Id="357" Count="0" />
       <LineId Id="354" Count="0" />

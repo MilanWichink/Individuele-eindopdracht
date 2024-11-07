@@ -6,13 +6,13 @@ VAR_GLOBAL
 	Power: BOOL := FALSE;
 	initialiseren:BOOL := FALSE;
 	Initialisatie_voltooid: BOOL := FALSE;
-	Status: STRING (INT#30):= 'OFF';
+	Status: STRING (INT#50):= 'OFF';
 	MotorInvoer: BOOL := 0;
 	ZaagLengte: INT :=0;
 	HuidigePositieAanvoer: INT := 200;
 	StartAanvoer: BOOL;
 	AanvoerInPositie: BOOL;
-	ZagenKlaar: BOOL;
+	ZagenKlaar: BOOL :=FALSE;
 	motoruitvoer: BOOL;
 END_VAR]]></Declaration>
   </GVL>
