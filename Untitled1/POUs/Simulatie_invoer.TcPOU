@@ -5,6 +5,7 @@
 VAR_INPUT
 END_VAR
 VAR
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -12,23 +13,23 @@ END_VAR
 	
 
 	IF GVL.ZaagLengte <= GVL.HuidigePositieAanvoer THEN
-		Gvl.MotorInvoer:= TRUE;				
+		Gvl.MotorInvoer:= TRUE;	
 		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer - 1;
 	END_IF;
 				
 				
 	IF GVL.ZaagLengte > GVL.HuidigePositieAanvoer THEN
-		Gvl.MotorInvoer:= TRUE;				
+		Gvl.MotorInvoer:= TRUE;		
 		GVL.HuidigePositieAanvoer := GVL.HuidigePositieAanvoer + 1;
 	END_IF;
 	
-	
 	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer THEN
-		GVL.MotorInvoer := FALSE;
+		GVL.MotorInvoer:=FALSE;
 	END_IF
-			
-END_IF			
-		
+	
+ELSE
+	Gvl.MotorInvoer:=FALSE;
+END_IF
 	
 
 ]]></ST>
@@ -39,18 +40,17 @@ END_IF
       <LineId Id="8" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="41" Count="0" />
-      <LineId Id="12" Count="3" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="13" Count="2" />
       <LineId Id="33" Count="0" />
       <LineId Id="42" Count="0" />
-      <LineId Id="32" Count="0" />
+      <LineId Id="85" Count="0" />
       <LineId Id="29" Count="0" />
+      <LineId Id="89" Count="2" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="69" Count="3" />
       <LineId Id="40" Count="0" />
       <LineId Id="39" Count="0" />
-      <LineId Id="37" Count="0" />
-      <LineId Id="36" Count="0" />
-      <LineId Id="43" Count="0" />
-      <LineId Id="16" Count="0" />
-      <LineId Id="21" Count="3" />
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>

@@ -32,6 +32,7 @@ END_VAR
 	IF GVL.ZaagLengte = GVL.HuidigePositieAanvoer AND motoruitvoer = FALSE AND gvl.ZagenKlaar = FALSE AND gvl.ZaagLengte >0 THEN
 		gvl.AanvoerInPositie :=TRUE;
 		GVL.StartAanvoer:=FALSE;
+		gvl.MotorInvoer:=false;
 		GVL.Status:= 'Aanvoer in positie druk op: start zagen';
 	END_IF
 	
@@ -70,7 +71,9 @@ END_IF]]></ST>
       <LineId Id="179" Count="0" />
       <LineId Id="108" Count="0" />
       <LineId Id="170" Count="0" />
-      <LineId Id="109" Count="4" />
+      <LineId Id="109" Count="3" />
+      <LineId Id="187" Count="0" />
+      <LineId Id="113" Count="0" />
       <LineId Id="100" Count="0" />
       <LineId Id="162" Count="0" />
       <LineId Id="136" Count="1" />

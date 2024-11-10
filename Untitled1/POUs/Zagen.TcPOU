@@ -15,7 +15,7 @@ END_VAR
       <ST><![CDATA[IF GVL.Power = TRUE THEN 
 
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = FALSE THEN
-		GVL.Status := 'voer eerst een lengte in';
+		GVL.Status := 'Aanvoer nog niet in positie';
 	END_IF
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = TRUE THEN
 		MotorZagen :=TRUE;
