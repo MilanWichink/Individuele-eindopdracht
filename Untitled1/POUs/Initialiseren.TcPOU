@@ -10,11 +10,11 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF GVL.HuidigePositieAanvoer >=1 AND GVL.Initialisatie_voltooid = FALSE THEN
 		GVL.Status:= 'Initialiseer de machine';
-	END_IF
+END_IF
 
 IF GVL.Initialisatie_voltooid = FALSE AND GVL.Initialiseren =TRUE THEN
 	Simulatie_Invoer();
-		IF gvl.ZaagLengte = gvl.HuidigePositieAanvoer THEN 
+	IF gvl.ZaagLengte = gvl.HuidigePositieAanvoer THEN 
 			GVL.Initialisatie_voltooid := TRUE;	
 			GVL.Initialiseren:=FALSE;	
 	END_IF

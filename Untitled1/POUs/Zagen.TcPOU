@@ -17,22 +17,23 @@ END_VAR
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = FALSE THEN
 		GVL.Status := 'Aanvoer nog niet in positie';
 	END_IF
+	
 	IF GVL.AanvoerInPositie = TRUE AND StartZagen = TRUE THEN
 		MotorZagen :=TRUE;
 		GVL.Status:= 'Zaag actief';
 		timer(in:=TRUE, Pt := T#5S);
 		IF timer.Q THEN 
 			EindaanslagZaag := TRUE;	
-		END_IF
-		IF EindaanslagZaag = TRUE THEN
-			MotorZagen := FALSE;
-			StartZagen := FALSE;
-			GVL.ZagenKlaar :=TRUE;
-			timer(in:= FALSE, pt := T#5S);
-			eindaanslagzaag := FALSE;
-		END_IF
-		
 	END_IF
+	
+	IF EindaanslagZaag = TRUE THEN
+		MotorZagen := FALSE;
+		StartZagen := FALSE;
+		GVL.ZagenKlaar :=TRUE;
+		timer(in:= FALSE, pt := T#5S);
+		eindaanslagzaag := FALSE;
+	END_IF
+end_if		
 ELSE
 MotorZagen:= FALSE;
 
@@ -43,17 +44,19 @@ END_IF]]></ST>
       <LineId Id="220" Count="0" />
       <LineId Id="341" Count="0" />
       <LineId Id="400" Count="1" />
+      <LineId Id="425" Count="0" />
       <LineId Id="352" Count="1" />
       <LineId Id="359" Count="0" />
       <LineId Id="367" Count="0" />
       <LineId Id="369" Count="2" />
-      <LineId Id="374" Count="1" />
+      <LineId Id="374" Count="0" />
+      <LineId Id="424" Count="0" />
+      <LineId Id="375" Count="0" />
       <LineId Id="411" Count="0" />
       <LineId Id="386" Count="0" />
       <LineId Id="413" Count="1" />
       <LineId Id="376" Count="0" />
       <LineId Id="357" Count="0" />
-      <LineId Id="354" Count="0" />
       <LineId Id="388" Count="0" />
       <LineId Id="390" Count="0" />
       <LineId Id="389" Count="0" />
