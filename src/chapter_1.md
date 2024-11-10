@@ -1,96 +1,108 @@
-# Chapter 1
+# Individuele eindopdracht
+
+## Introductie
+In de flowcharts hieronder wordt de werking van het programma van een zaagmachine beschreven.  De flowcharts zijn opgedeeld in de 2 hoofd taken die samen het volledige proces van het zagen regelen. Daarnaast zijn er ook een aantal functieblokken die in deze taken aangeroepen worden.
+
+1. Taak 1: Zagen Materiaal  
+  Deze taak regelt het zagen van het materiaal.
+
+2. Taak 2: In- en Uitvoer van Materiaal  
+Deze taak regelt het invoeren van het materiaal. Verder wordt de initialisatie gecontroleerd en eventueel uitgevoerd. Ook wordt vervolgens de uitvoer van het materiaal geregeld. 
+
+3. Functie: Initialiseren Machine
+Deze functie gaat over het in de juiste positie zetten van de machine aan het begin van de operatie. Als de machine wordt ingeschakeld, wordt eerst gecontroleerd of de juiste startpositie is bereikt. Zo niet dan wordt de invoer op de juiste positie gezet.
+
+4. functie: Simulatie in- en uitvoer
+Deze functie staat niet in een flowchart, maar zit wel in het programma. Dit is gedaan, omdat dit normaal niet in een zaagmachine zit. Dit stukje code is gemaakt om de visualisatie van het programma duidelijker te maken.
 
 
-## taak 1 zagen materiaal
+## Taak 1: Zagen Materiaal
+
 ```plantuml
-
 @startuml Zagen
- 
+
 start
-if (Systeem is ingeschakeld?) then (ja)
+if (Systeem is ingeschakeld?) then (Ja)
   
-    if (Aanvoer in positie en zaag gestart?) then (nee)
-        :Toon status: 'Voer eerst een lengte in';
+    if (Aanvoer in positie en zaag gestart?) then (Nee)
+        :Toon status: "Voer eerst een lengte in";
     else
         :Start zaagmotor;
         repeat
-            :Toon status: 'Zaag actief';
-        repeat while (Eindaanslag zaag bereikt?) is (nee) not (ja)
+            :Toon status: "Zaag actief";
+        repeat while (Eindaanslag zaag bereikt?) is (Nee) not (Ja)
             :Stop zaagmotor;
-            :set zagen voltooid;
+            :Set zagen voltooid;
        
     endif
 
-else (nee)
+else (Nee)
     :Schakel zaagmotor uit;
 endif
+stop
+
 @enduml
-
 ```
-## taak 2 In en uitvoer van materiaal
 
+
+## Taak 2 in en uitvoer van materiaal.
 ```plantuml
 @startuml In- en uitvoer
 
 start
-if (Systeem is ingeschakeld?) then (ja)
+if (Systeem is ingeschakeld?) then (Ja)
   repeat
-  :initialisatie bezig;
-  repeat while (Initialisatie voltooid?) is (nee) not (ja)
+  :Initialisatie bezig;
+  repeat while (Initialisatie voltooid?) is (Nee) not (Ja)
     
-  :Toon status: 'Voer de zaaglengte in';
+  :Toon status: "Voer de zaaglengte in";
   :Start aanvoer;
 
       repeat
-    :taak in- en uitvoer bezig;
-    repeat while (Zaaglengte bereikt aanvoer positie en aanvoer gereed?) is (nee) not (ja)
+    :Taak in- en uitvoer bezig;
+    repeat while (Zaaglengte bereikt aanvoerpositie en aanvoer gereed?) is (Nee) not (Ja)
       :Set aanvoer in positie;
       :Stop aanvoer;
-      :Toon status: 'Aanvoer in positie, druk op: 'start zagen';
+      :Toon status: "Aanvoer in positie, druk op: 'Start zagen'";
     
-
-
      repeat
-            :taak zagen bezig;
-        repeat while (zagen klaar?) is (nee) not (ja)
-            :start uitvoer;
+            :Taak zagen bezig;
+        repeat while (Zagen klaar?) is (Nee) not (Ja)
+            :Start uitvoer;
     
-
-    :sensor uitvoer is hoog;
-    : stop uitvoer; 
+    :Sensor uitvoer is hoog;
+    :Stop uitvoer; 
   else 
-  :stop aanvoer motor;
-  :stop uitvoer motor;
+  :Stop aanvoermotor;
+  :Stop uitvoermotor;
   
   endif
-
-
 
 stop
 @enduml
 ```
 
-## Functie intialiseren Machine
+
+## Functie initialiseren van de zaagmachine.
 ```plantuml
-@startuml initialiseren
+@startuml Initialiseren
 
 start
 
-if (Controleer of de initialisatie nog niet voltooid is) then (nee)
+if (Controleer of de initialisatie nog niet voltooid is) then (Nee)
 
-
-  if (Positie groter is als 0 en Initialisatie nog niet voltooid) then (Ja)
+  if (Positie groter is dan 0 en initialisatie nog niet voltooid) then (Ja)
       :Stel status in op "Machine initialiseren";
   else
-    : set initialisatie voltooid;
+    :Set initialisatie voltooid;
     stop
   endif
 
-    :start invoer motor;
+    :Start invoermotor;
   repeat
    :Invoer nog bezig;
-  repeat while (Huidige positie is gelijk aan 0) is (nee) not (ja)
-        :set initialisatie als voltooid;
+  repeat while (Huidige positie is gelijk aan 0) is (Nee) not (Ja)
+        :Set initialisatie als voltooid;
 
 else
 stop
